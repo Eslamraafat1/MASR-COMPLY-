@@ -1,0 +1,245 @@
+@import "tailwindcss";
+
+/* ───────────────────────── MASR COMPLY design tokens ─────────────────────────
+   Palette follows the brief. `muted` is nudged slightly darker than #697586 so
+   secondary text on #F5F7FA backgrounds still clears WCAG AA (4.5:1). */
+@theme {
+  --color-navy-950: #070708;
+  --color-navy-900: #111214;
+  --color-navy-800: #1c1e22;
+  --color-navy-700: #2b2e34;
+  --color-navy-600: #4a4e56;
+  --color-navy-100: #e7e8ea;
+  --color-navy-50: #f3f3f4;
+
+  --color-flag-red: #ce1126;
+  --color-flag-red-dark: #a50d1e;
+  --color-flag-red-soft: #fdecee;
+  --color-flag-green: #CE1126;
+  --color-flag-green-dark: #a50d1e;
+  --color-flag-green-soft: #fdecee;
+
+  --color-gold: #b8913f;
+  --color-gold-soft: #f6efdf;
+
+  --color-ink: #16181c;
+  --color-muted: #5c6068;
+  --color-line: #e6e6e8;
+  --color-surface: #f6f6f7;
+
+  --font-sans: var(--font-ar), var(--font-en), ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-card: 0 1px 2px rgb(17 18 20 / 0.04), 0 4px 16px -6px rgb(17 18 20 / 0.08);
+  --shadow-lift: 0 2px 4px rgb(17 18 20 / 0.04), 0 18px 40px -16px rgb(17 18 20 / 0.22);
+  --shadow-pop: 0 24px 60px -20px rgb(7 7 8 / 0.45);
+
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+html[lang="en"] {
+  --font-sans: var(--font-en), var(--font-ar), ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  background: #fff;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.7;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+html[lang="en"] body {
+  line-height: 1.6;
+}
+
+::selection {
+  background: var(--color-navy-900);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-flag-green);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Latin numerals & codes should stay LTR inside RTL text */
+.ltr-num {
+  direction: ltr;
+  unicode-bidi: isolate;
+  display: inline-block;
+}
+
+@layer components {
+  .container-x {
+    width: 100%;
+    max-width: 1280px;
+    margin-inline: auto;
+    padding-inline: 1rem;
+  }
+  @media (min-width: 640px) {
+    .container-x {
+      padding-inline: 1.5rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .container-x {
+      padding-inline: 2rem;
+    }
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--color-flag-green);
+  }
+  .eyebrow::before {
+    content: "";
+    width: 1.5rem;
+    height: 2px;
+    background: currentColor;
+    border-radius: 2px;
+  }
+
+  .field {
+    width: 100%;
+    min-height: 2.75rem;
+    border-radius: 0.625rem;
+    border: 1px solid #d3d4d8;
+    background: #fff;
+    padding: 0.5rem 0.875rem;
+    font-size: 0.9375rem;
+    color: var(--color-ink);
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .field::placeholder {
+    color: #94a0b1;
+  }
+  .field:hover {
+    border-color: #a5a7ad;
+  }
+  .field:focus {
+    outline: none;
+    border-color: var(--color-flag-green);
+    box-shadow: 0 0 0 3px rgb(206 17 38 / 0.16);
+  }
+  .field[aria-invalid="true"] {
+    border-color: var(--color-flag-red);
+    box-shadow: 0 0 0 3px rgb(206 17 38 / 0.1);
+  }
+  .field:disabled {
+    background: var(--color-surface);
+    cursor: not-allowed;
+  }
+}
+
+/* Subtle Egyptian-inspired geometric lattice (stepped lotus/diamond motif) */
+.pattern-lattice {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='.07' stroke-width='1'%3E%3Cpath d='M28 4 52 28 28 52 4 28Z'/%3E%3Cpath d='M28 16 40 28 28 40 16 28Z'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 56px 56px;
+}
+.pattern-lattice-light {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cg fill='none' stroke='%23101d32' stroke-opacity='.05' stroke-width='1'%3E%3Cpath d='M28 4 52 28 28 52 4 28Z'/%3E%3Cpath d='M28 16 40 28 28 40 16 28Z'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 56px 56px;
+}
+
+/* Flag-stripe accent: red / white / black rendered as green-red restrained rule */
+.flag-rule {
+  height: 3px;
+  background: linear-gradient(
+    to right,
+    var(--color-flag-red) 0 33.33%,
+    #fff 33.33% 66.66%,
+    var(--color-navy-900) 66.66% 100%
+  );
+}
+
+/* Native <dialog> animation */
+dialog.modal {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  max-width: 100vw;
+  max-height: 100dvh;
+  margin: auto;
+}
+dialog.modal::backdrop {
+  background: rgb(7 7 8 / 0.55);
+  backdrop-filter: blur(3px);
+}
+dialog.modal[open] {
+  animation: modal-in 0.22s var(--ease-out-quint);
+}
+dialog.modal[open]::backdrop {
+  animation: fade-in 0.22s ease-out;
+}
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+html[dir="rtl"] .skeleton::after {
+  animation-direction: reverse;
+}
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: #e9eef4;
+  border-radius: 0.5rem;
+}
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.6), transparent);
+  animation: shimmer 1.4s infinite;
+}
+
+/* Directional icons (arrows/chevrons) flip in RTL */
+html[dir="rtl"] .flip-rtl {
+  transform: scaleX(-1);
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

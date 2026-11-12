@@ -32,5 +32,15 @@
     "tailwindcss": "^4.3.5",
     "typescript": "5.9",
     "vitest": "^5.1.0"
+  },
+  "license": "MIT",
+  "author": "Eslam Raafat <eslamraafat736@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eslamraafat1/masr-comply-.git"
+  },
+  "homepage": "https://github.com/Eslamraafat1/masr-comply-#readme",
+  "engines": {
+    "node": ">=20.9"
   }
 }
